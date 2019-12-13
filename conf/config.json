@@ -1,0 +1,19 @@
+{
+	"font_sizes":{
+		"smallest":1.5,
+		"small":2,
+		"normal":2.5,
+		"large":3,
+		"huge":3.5,
+		"hugest":4
+	},
+	"font_name":"normal",
+	"uihome":"http://www.bsppo.com:10080",
+	"root":{
+		"widgettype":"urlwidget",
+		"options":{
+			"url":"/toolpage.ui"
+		}
+	}
+}
+
