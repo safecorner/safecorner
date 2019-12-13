@@ -25,7 +25,6 @@ class SongViewer(ButtonBehavior, BoxLayout):
 		if self.initflag:
 			return
 		self.initflag = True
-		print('SongViewer():rec_data=',self.rec_data, self.options)
 		songnane = Label(text=self.rec_data['songname'],font_size=CSize(1))
 		self.add_widget(songnane)
 		singer = Label(text=self.rec_data['singer'], font_size=CSize(0.85))
