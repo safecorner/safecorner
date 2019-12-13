@@ -1,13 +1,17 @@
 from kivy.uix.button import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivyblocks.utils import CSize
+from kivyblocks.utils import CSize, absurl
 from kivyblocks.i18n import getI18n
+from kivyblocks.baseWidget import PressableImage
+from appPublic.jsonConfig import getConfig
 
-class SongViewer(ButtonBehavior, BoxLayout):
-	def __init__(self,ancestor=None,record={}, **options):
+class PicViewer(ButtonBehavior, BoxLayout):
+	def __init__(self, ancestor=None,record={}, **options):
+		print('PicViewer(),options=',options)
 		options['orientation'] = 'vertical'
 		self.initflag = False
+		selfancestor = ancestor
 		self.options = options
 		self.rec_data = record
 		super().__init__(**options)
@@ -26,17 +30,10 @@ class SongViewer(ButtonBehavior, BoxLayout):
 		if self.initflag:
 			return
 		self.initflag = True
-		i18n = getI18n()
-		tname = i18n("Song:") + self.rec_data['songname']
-		tsinger = i18n('Singer:') + self.rec_data['singer']
-		singer = Label(text=tsinger, font_size=CSize(1),
-					size_hint_y=None,
-					height=CSize(2))
-		self.add_widget(singer)
-		songnane = Label(text=tname,font_size=CSize(1),
-					size_hint_y=None,
-					height=CSize(2))
-		self.add_widget(songnane)
+		config = getConfig()
+		url = "%s/idfile/%s" % (config.uihome, self.rec_data['id'])
+		img = PressableImage(source=url) 
+		self.add_widget(img)
 
 	def on_size(self,o,v=None):
 		pass

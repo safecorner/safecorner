@@ -1,10 +1,10 @@
 [app]
 
 # (str) Title of your application
-title = Home Center
+title = Safecorner
 
 # (str) Package name
-package.name = home_center
+package.name = safecorner
 
 # (str) Package domain (needed for android/ios packaging)
 package.domain = com.bsppo
@@ -28,7 +28,7 @@ source.include_patterns = conf/*.json, conf/*.ui
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.3
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -46,10 +46,10 @@ requirements = pygame, pillow, ffmpeg, ffpyplayer, pygments,markupsafe,jinja2,re
 #garden_requirements =
 
 # (str) Presplash of the application
-presplash.filename = %(source.dir)s/livetv.png
+presplash.filename = %(source.dir)s/safecorner.png
 
 # (str) Icon of the application
-icon.filename = %(source.dir)s/livetv.png
+icon.filename = %(source.dir)s/safecorner.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = all
