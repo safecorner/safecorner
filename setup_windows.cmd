@@ -7,6 +7,5 @@ pip install kivy
 pip install git+https://github.com/yumoqing/appPublic
 pip install git+https://github.com/yumoqing/sqlor
 pip install git+https://github.com/yumoqing/kivycalendar
-git install git+https://github.com/yumoqing/kivyblocks
-
+pip install git+https://github.com/yumoqing/kivyblocks
 
