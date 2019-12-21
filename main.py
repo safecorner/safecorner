@@ -1,6 +1,7 @@
 import os
 os.environ["KIVY_VIDEO"] = "ffpyplayer"
 import sys
+from kivy.core.window import Window
 from appPublic.folderUtils import ProgramPath
 from appPublic.jsonConfig import getConfig
 from kivyblocks.blocksapp import BlocksApp
@@ -10,6 +11,7 @@ from channelbox import ChannelBox
 from livetv import LiveTV
 from songviewer import SongViewer
 from picviewer import PicViewer
+from movieviewer import MovieViewer
 
 if __name__ == '__main__':
 	pp = ProgramPath()
@@ -20,6 +22,7 @@ if __name__ == '__main__':
 	config = getConfig(workdir,NS={'workdir':workdir,'ProgramPath':pp})
 	registerWidget('LiveTV',LiveTV)
 	registerWidget('SongViewer',SongViewer)
+	registerWidget('MovieViewer',MovieViewer)
 	registerWidget('PicViewer',PicViewer)
 	registerWidget('ChannelBox', ChannelBox)
 	myapp = BlocksApp()

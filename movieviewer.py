@@ -4,7 +4,7 @@ from kivy.uix.label import Label
 from kivyblocks.utils import CSize
 from kivyblocks.i18n import getI18n
 
-class SongViewer(ButtonBehavior, BoxLayout):
+class MovieViewer(ButtonBehavior, BoxLayout):
 	def __init__(self,ancestor=None,record={}, **options):
 		options['orientation'] = 'vertical'
 		self.initflag = False
@@ -20,22 +20,17 @@ class SongViewer(ButtonBehavior, BoxLayout):
 		return self.rec_data
 
 	def do_press(self,o, v=None):
-		print('SongViewer():on_press fired ........')
+		print('MovieViewer():on_press fired ........')
 
 	def init(self):
 		if self.initflag:
 			return
 		self.initflag = True
-		tname = self.rec_data['songname']
-		tsinger = self.rec_data['singer']
-		singer = Label(text=tsinger, font_size=CSize(1),
+		tname = self.rec_data['name']
+		nane = Label(text=tname,font_size=CSize(1),
 					size_hint_y=None,
 					height=CSize(2))
-		self.add_widget(singer)
-		songnane = Label(text=tname,font_size=CSize(1),
-					size_hint_y=None,
-					height=CSize(2))
-		self.add_widget(songnane)
+		self.add_widget(nane)
 
 	def on_size(self,o,v=None):
 		pass
