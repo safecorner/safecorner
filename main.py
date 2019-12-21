@@ -24,5 +24,4 @@ if __name__ == '__main__':
 	registerWidget('ChannelBox', ChannelBox)
 	myapp = BlocksApp()
 	myapp.run()
-	myapp.workers.running = False 
 
