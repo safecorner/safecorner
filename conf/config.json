@@ -9,6 +9,9 @@
 	},
 	"font_name":"normal",
 	"uihome":"http://www.bsppo.com:10080",
+	"i18n_url":"/public/i18n",
+	"login_url":"/public/publickey",
+	"publickey_url":"/pubic/publickey",
 	"root":{
 		"widgettype":"urlwidget",
 		"options":{

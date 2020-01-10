@@ -2,7 +2,6 @@ from kivy.uix.button import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivyblocks.utils import CSize, absurl
-from kivyblocks.i18n import getI18n
 from kivyblocks.baseWidget import PressableImage
 from appPublic.jsonConfig import getConfig
 

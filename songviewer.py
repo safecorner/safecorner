@@ -2,7 +2,6 @@ from kivy.uix.button import ButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivyblocks.utils import CSize
-from kivyblocks.i18n import getI18n
 
 class SongViewer(ButtonBehavior, BoxLayout):
 	def __init__(self,ancestor=None,record={}, **options):
