@@ -1,6 +1,7 @@
 python -m pip install --upgrade pip 
 pip install wheel setuptools 
 pip install docutils pygments pypiwin32 kivy_deps.sdl2 kivy_deps.glew
+pip install cryptography
 pip install pillow
 pip install ffpyplayer
 pip install opencv-python
