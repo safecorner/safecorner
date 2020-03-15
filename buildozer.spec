@@ -36,7 +36,7 @@ version = 0.4
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = cryptography, pygame, pillow, ffmpeg, ffpyplayer, opencv-python, pygments,markupsafe,jinja2,requests,python3,kivy,git+https://github.com/yumoqing/appPublic,git+https://github.com/yumoqing/kivycalendar,git+https://github.com/yumoqing/kivy-blocks
+requirements = cryptography, pygame, pillow, ffmpeg, ffpyplayer, opencv-python, pygments,markupsafe,jinja2,requests,python3,kivy,pythonosc,git+https://github.com/yumoqing/appPublic,git+https://github.com/yumoqing/kivycalendar,git+https://github.com/yumoqing/kivy-blocks
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
