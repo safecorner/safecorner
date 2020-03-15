@@ -14,6 +14,21 @@ from appPublic.Singleton import SingletonDecorator
 class Channels(list):
 	pass
 
+class WebKitPlayer(BoxLayout):
+	def __init__(self,url):
+		self.b = BoxLayout(size_hint=(None,None),size=CSize(1,1))
+		self.w = AWebView(url=url)
+		super().__init__()
+		self.add_widget(self.b)
+		self.add_widget(self.w)
+		self.bind(size=self.onSize,pos=self.onSize)
+
+	def onSize(self,o,v=None):
+		if self.width > self.height:
+			self.orientation = 'vertical'
+		else:
+			self.orientation = 'horizontal'
+		
 class ChannelBox(ButtonBehavior, BoxLayout):
 	active_channel = BooleanProperty(False)
 	active_bgcolor = [0.3,0.3,1,1]
@@ -86,17 +101,15 @@ class ChannelBox(ButtonBehavior, BoxLayout):
 		self.channel_list[x].active_channel = True
 
 	def do_selected(self):
+		app = App.get_running_app()
 		if platform == 'android':
 			url = "%s?src_url=%s&src_name=%s" % ( \
 					absurl('play.html.tmpl',self.parenturl) 
 					,self.url, self.channel_name) 
 			print('on_selected():url=',url)
-			desc = {
-				"widgettype":"AWebView",
-				"options":{
-					"url":url
-				}
-			}
+			x = WebKitPlayer(url=url)
+			app.root.add_widget(x)
+			return
 		else:
 			desc = {
 				"widgettype":"VPlayer",
@@ -104,12 +117,11 @@ class ChannelBox(ButtonBehavior, BoxLayout):
 					"vfile":self.url
 				}
 			}
-		app = App.get_running_app()
-		x = app.blocks.widgetBuild(desc)
-		if x is not None:
-			app.root.add_widget(x)
-		else:
-			alert(str(desc)+':create widget error')
+			x = app.blocks.widgetBuild(desc)
+			if x is not None:
+				app.root.add_widget(x)
+			else:
+				alert(str(desc)+':create widget error')
 
 
 	def on_active_channel(self,o=None,v=None):
