@@ -26,8 +26,12 @@ class WebKitPlayer(BoxLayout):
 	def onSize(self,o,v=None):
 		if self.width > self.height:
 			self.orientation = 'vertical'
+			b.width = CSize(1)
+			b.height = self.height
 		else:
 			self.orientation = 'horizontal'
+			b.height = CSize(1)
+			b.width = self.width
 		
 class ChannelBox(ButtonBehavior, BoxLayout):
 	active_channel = BooleanProperty(False)
