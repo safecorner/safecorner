@@ -9,6 +9,8 @@ from kivy.properties import BooleanProperty
 from kivy.graphics import Color, Rectangle
 from kivyblocks.utils import *
 from appPublic.Singleton import SingletonDecorator
+if platform == 'android':
+	from kivyblocks.widgetExt.androidwebview import AWebView
 
 @SingletonDecorator
 class Channels(list):
@@ -106,26 +108,17 @@ class ChannelBox(ButtonBehavior, BoxLayout):
 
 	def do_selected(self):
 		app = App.get_running_app()
-		if platform == 'android':
-			url = "%s?src_url=%s&src_name=%s" % ( \
-					absurl('play.html.tmpl',self.parenturl) 
-					,self.url, self.channel_name) 
-			print('on_selected():url=',url)
-			x = WebKitPlayer(url=url)
-			app.root.add_widget(x)
-			return
-		else:
-			desc = {
-				"widgettype":"VPlayer",
-				"options":{
-					"vfile":self.url
-				}
+		desc = {
+			"widgettype":"VPlayer",
+			"options":{
+				"vfile":self.url
 			}
-			x = app.blocks.widgetBuild(desc)
-			if x is not None:
-				app.root.add_widget(x)
-			else:
-				alert(str(desc)+':create widget error')
+		}
+		x = app.blocks.widgetBuild(desc)
+		if x is not None:
+			app.root.add_widget(x)
+		else:
+			alert(str(desc)+':create widget error')
 
 
 	def on_active_channel(self,o=None,v=None):
