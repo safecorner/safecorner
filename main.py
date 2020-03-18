@@ -29,12 +29,11 @@ class MyApp(App):
 		config.uihome = config.uihome_local
 		x = self.blocks.widgetBuild(config.root)
 		if x is None:
-			# print('*****************Use Internet IP***********************')
-			# config.uihome = config.uihome_internet
-			# print('*****************Use Internet IP***********************')
-			# x = self.blocks.widgetBuild(config.root)
-			# if x is None:
-			#	alert(str(self.config.root)+': cannt build widget')
+			config.uihome = config.uihome_internet
+			Logger.info('*****************Use Internet IP***********************')
+			x = self.blocks.widgetBuild(config.root)
+			if x is None:
+				alert(str(self.config.root)+': cannt build widget')
 			return
 		self.root.add_widget(x)
 		return 
