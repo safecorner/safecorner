@@ -26,6 +26,7 @@ class MyApp(App):
 	def build1(self,t=None):
 		x = None
 		config = getConfig()
+		Logger.info('*****************Use Intranet IP***********************')
 		config.uihome = config.uihome_local
 		x = self.blocks.widgetBuild(config.root)
 		if x is None:
@@ -34,7 +35,6 @@ class MyApp(App):
 			x = self.blocks.widgetBuild(config.root)
 			if x is None:
 				alert(str(self.config.root)+': cannt build widget')
-			return
 		self.root.add_widget(x)
 		return 
 	
