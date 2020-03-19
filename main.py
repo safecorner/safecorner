@@ -1,6 +1,8 @@
 import os
 os.environ["KIVY_VIDEO"] = "ffpyplayer"
 import sys
+import requests
+
 from kivy.app import App
 from kivy.clock import Clock
 from kivy.core.window import Window
@@ -17,6 +19,13 @@ from songviewer import SongViewer
 from picviewer import PicViewer
 from movieviewer import MovieViewer
 
+def canReach(url):
+	try:
+		r = request.get(url,timeout=1)
+	except:
+		return False
+	return True
+
 class MyApp(App):
 	def build(self):
 		x = PageContainer()
@@ -27,14 +36,14 @@ class MyApp(App):
 		x = None
 		config = getConfig()
 		Logger.info('*****************Use Intranet IP***********************')
-		config.uihome = config.uihome_local
+		if canReach(config.uihome_local):
+			config.uihome = config.uihome_local
+		else:
+			config.uihome = config.uihome_internet
 		x = self.blocks.widgetBuild(config.root)
 		if x is None:
-			config.uihome = config.uihome_internet
-			Logger.info('*****************Use Internet IP***********************')
-			x = self.blocks.widgetBuild(config.root)
-			if x is None:
-				alert(str(self.config.root)+': cannt build widget')
+			alert(str(self.config.root)+': cannt build widget')
+			return 
 		self.root.add_widget(x)
 		return 
 	
