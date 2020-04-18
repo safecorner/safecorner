@@ -12,6 +12,7 @@ from appPublic.jsonConfig import getConfig
 from kivyblocks.blocksapp import appBlocksHack
 from kivyblocks.blocks import registerWidget
 from kivyblocks.pagescontainer import PageContainer
+from kivyblocks.utils import *
 
 from channelbox import ChannelBox
 from livetv import LiveTV
@@ -47,6 +48,20 @@ class MyApp(App):
 		self.root.add_widget(x)
 		return 
 	
+	def on_close(self,*args,**kwargs):
+		"""
+		catch the "x" button's event of window
+		"""
+		Logger.info('kivyblocks: on_close(), args=%s, kwargs=%s',str(args),str(kwargs))
+		app = App.get_running_app()
+		if len(app.root.pageWidgets) <= 1:
+			app.workers.running = False
+			Logger.info('kivyblocks: on_close(), return False')
+			return False
+		app.root.previous()
+		Logger.info('kivyblocks: on_close(), return True')
+		return True
+
 if __name__ == '__main__':
 	pp = ProgramPath()
 	workdir = pp

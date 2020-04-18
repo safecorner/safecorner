@@ -7,6 +7,7 @@
 		"huge":3.5,
 		"hugest":4
 	},
+	"color_style":"Blue",
 	"font_name":"normal",
 	"uihome_local":"http://192.168.1.9:8090",
 	"uihome_internet":"http://www.bsppo.com:10080",

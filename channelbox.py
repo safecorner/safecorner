@@ -16,25 +16,6 @@ if platform == 'android':
 class Channels(list):
 	pass
 
-class WebKitPlayer(BoxLayout):
-	def __init__(self,url):
-		self.b = BoxLayout(size_hint=(None,None),size=CSize(1,1))
-		self.w = AWebView(url=url)
-		super().__init__()
-		self.add_widget(self.b)
-		self.add_widget(self.w)
-		self.bind(size=self.onSize,pos=self.onSize)
-
-	def onSize(self,o,v=None):
-		if self.width > self.height:
-			self.orientation = 'vertical'
-			b.width = CSize(1)
-			b.height = self.height
-		else:
-			self.orientation = 'horizontal'
-			b.height = CSize(1)
-			b.width = self.width
-		
 class ChannelBox(ButtonBehavior, BoxLayout):
 	active_channel = BooleanProperty(False)
 	active_bgcolor = [0.3,0.3,1,1]
